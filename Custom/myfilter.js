@@ -1,16 +1,13 @@
-// polyfill for filter
-// filter creates a new array with elements that pass a test provided by a function
-Array.prototype.myFilter = function(callback) {
-  // initialize an empty array to store the result
-  var result = [];
-  // loop through the array elements
-  for (var i = 0; i < this.length; i++) {
-    // call the callback function with the current element, index, and array
-    // and if the returned value is truthy, push the current element to the result array
-    if (callback(this[i], i, this)) {
-      result.push(this[i]);
-    }
-  }
-  // return the result array
-  return result;
-};
+// Polyfill of Array.filter
+
+Array.prototype.filter = function(callbackFn) {
+    const output = []
+    this.forEach((element, index) => {
+        if (callbackFn(element, index, this)) {
+            output.push(element)
+        }
+    })
+    return output
+}
+
+console.log([1,2,3,4,5,6].filter((e) => e % 2 === 0))
