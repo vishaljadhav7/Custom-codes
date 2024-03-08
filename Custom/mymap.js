@@ -1,14 +1,19 @@
-// polyfill for map
-// map creates a new array by applying a function to each element in the original array
-Array.prototype.myMap = function(callback) {
-  // initialize an empty array to store the result
-  var result = [];
-  // loop through the array elements
-  for (var i = 0; i < this.length; i++) {
-    // call the callback function with the current element, index, and array
-    // and push the returned value to the result array
-    result.push(callback(this[i], i, this));
-  }
-  // return the result array
-  return result;
-};
+ 
+const arr = [1, 2, 3, 4, 5]; 
+  
+function callback(ele) { 
+    return ele * 2; 
+} 
+  
+Array.prototype.myMap = function (callback) { 
+    const myArr = []; 
+    for (const i in this) { 
+        myArr.push(callback(this[i])); 
+    } 
+    return myArr; 
+}; 
+  
+const newArr = arr.myMap(callback); 
+for (i in newArr) { 
+    console.log(newArr[i]); 
+}
