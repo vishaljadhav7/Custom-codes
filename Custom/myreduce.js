@@ -1,14 +1,21 @@
-// polyfill for reduce
-// reduce reduces an array to a single value by applying a function cumulatively to the elements
-Array.prototype.myReduce = function(callback, initialValue) {
-  // initialize the accumulator to the initial value or the first element
-  var accumulator = initialValue || this[0];
-  // loop through the array elements starting from the second element or the first element if no initial value is provided
-  for (var i = initialValue ? 0 : 1; i < this.length; i++) {
-    // call the callback function with the accumulator, current element, index, and array
-    // and assign the returned value to the accumulator
-    accumulator = callback(accumulator, this[i], i, this);
-  }
-  // return the accumulator
-  return accumulator;
-};
+const arr = [1, 2, 3, 4, 5, 6]; 
+
+function callback(ele) { 
+	if (ele % 2 == 0) { 
+		return true; 
+	} 
+
+	return false; 
+} 
+
+Array.prototype.myReduce = function (callback, sum) { 
+	for (const i in this) { 
+		if (callback(this[i])) { 
+			sum += this[i]; 
+		} 
+	} 
+	return sum; 
+}; 
+
+const sum = arr.myReduce(callback, 0); 
+console.log(sum);
