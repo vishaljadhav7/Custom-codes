@@ -20,3 +20,11 @@ const get = (obj, path) => {
   // if not found return undefined
   return value ? value : undefined;
 }
+
+
+// get([{ developer: "Tom" }, { count: [0, 1] }], "[1].count[0]");
+// console.log(get({ developer: "Software Engineer" }, "developer"));
+// console.log(get({ developer: { firstName: "Tom", lastName: "Cruz" } }, "developer.lastName"));
+// console.log(get([{ developer: "Tom" }, { count: [0, 1] }], "[1].count[0]"));
+// console.log(get([{ developer: "Tom" }, [0, null]], "[1][1]"));
+// console.log(get([{ developer: "Tom" }, [0, null]], "[1][3]"));
